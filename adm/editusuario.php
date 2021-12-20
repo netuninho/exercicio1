@@ -31,25 +31,23 @@ $op = isset($_GET["op"]) ? $_GET["op"]: null;
         }
         if($_POST){
             if($_POST["idusuario"]){
-                $sql = "UPDATE tblusuarios SET nome=:nome, email=:email, senha=:senha, idsituacao=:idsituacao, idnivelacesso=:idnivelacesso, criado=:criado, modificado=:modificado  WHERE idusuario =:idusuario";
+                $sql = "UPDATE tblusuarios SET nome=:nome, email=:email, senha=:senha, idsituacao=:idsituacao, idnivelacesso=:idnivelacesso, modificado=:modificado  WHERE idusuario =:idusuario";
                 $stmt = $con->prepare($sql);
                 $stmt->bindValue(":nome", $_POST["nome"]);
                 $stmt->bindValue(":email", $_POST["email"]);
                 $stmt->bindValue(":senha", $_POST["senha"]);
                 $stmt->bindValue(":idsituacao", $_POST["idsituacao"]);
                 $stmt->bindValue(":idnivelacesso", $_POST["idnivelacesso"]);
-                $stmt->bindValue(":criado", $_POST["criado"]);
                 $stmt->bindValue(":modificado", $_POST["modificado"]);
                 $stmt->execute(); 
             } else {
-                $sql = "INSERT INTO tblusuarios(nome,email,senha,idsituacao,idnivelacesso,criado) VALUES (:nome,:email,:senha,:idsituacao,:idnivelacesso,:criado)";
+                $sql = "INSERT INTO tblusuarios(nome,email,senha,idsituacao,idnivelacesso,modificado) VALUES (:nome,:email,:senha,:idsituacao,:idnivelacesso,:modificado)";
                 $stmt = $con->prepare($sql);
                 $stmt->bindValue(":nome",$_POST["nome"]);
                 $stmt->bindValue(":email",$_POST["email"]);
                 $stmt->bindValue(":senha", $_POST["senha"]);
                 $stmt->bindValue(":idsituacao", $_POST["idsituacao"]);
                 $stmt->bindValue(":idnivelacesso", $_POST["idnivelacesso"]);
-                $stmt->bindValue(":criado", $_POST["criado"]);
                 $stmt->bindValue(":modificado", $_POST["modificado"]);
                 $stmt->execute(); 
             }
@@ -95,8 +93,7 @@ $op = isset($_GET["op"]) ? $_GET["op"]: null;
             <option value="4">Fornecedor</option>
         </select>
 
-        Criado <input type="date" name="criado" class="form-control" value="<?php echo isset($tblusuarios) ? $tblusuarios->criado : null?>"><br>
-        Modificado <input type="date" name="criado" class="form-control" value="<?php echo isset($tblusuarios) ? $tblusuarios->modificado : null?>"><br>
+        Modificado <input type="date" name="modificado" class="form-control" value="<?php echo isset($tblusuarios) ? $tblusuarios->modificado : null?>"><br>
         <input type="hidden"      name="idusuario"                       value="<?php echo isset($tblusuarios) ? $tblusuarios->idcliente : null ?>">
         <br>
         <input type="submit" value="Cadastrar" class="btn btn-outline-primary">
