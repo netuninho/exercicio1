@@ -42,7 +42,7 @@ $op = isset($_GET["op"]) ? $_GET["op"]: null;
                 $stmt->bindValue(":modificado", $_POST["modificado"]);
                 $stmt->execute(); 
             } else {
-                $sql = "INSERT INTO tblusuarios(nome,email,senha,idsituacao,idnivelacesso,criado) VALUES (:nome,:email,:senha,:idsituacao,:idnivelacesso,:criado)";
+                $sql = "INSERT INTO tblusuarios(nome,email,senha,idsituacao,idnivelacesso,criado,modificado) VALUES (:nome,:email,:senha,:idsituacao,:idnivelacesso,:criado,:modificado)";
                 $stmt = $con->prepare($sql);
                 $stmt->bindValue(":nome",$_POST["nome"]);
                 $stmt->bindValue(":email",$_POST["email"]);
