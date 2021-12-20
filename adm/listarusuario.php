@@ -49,7 +49,7 @@ try{
             <td><?php echo $usuario->idusuario ?></td>
             <td><?php echo $usuario->nome ?></td>
             <td><?php echo $usuario->email ?></td>
-            
+            <td><a  href="frmusuario.php?idusuario=<?php echo $usuario->idusuario ?>">Editar</a></td>
             <td><a href="frmusuario.php?op=del&idusuario=<?php echo  $usuario->idusuario ?>">Excluir</a></td>
 
         </tr>
